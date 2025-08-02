@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Useless Popup Chaos</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      user-select: none;
+    }
+
+    #landing, #question {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    #landing h1 {
+      font-size: 2rem;
+      color: red;
+      cursor: pointer;
+      border: 2px dashed red;
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    #landing h1:hover {
+      transform: scale(1.1);
+    }
+
+    #question {
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #noBtn {
+      background-color: gray;
+      color: white;
+      position: relative;
+    }
+
+    #yesBtn {
+      background-color: crimson;
+      color: white;
+    }
+
+    .popup {
+      position: absolute;
+      padding: 15px;
+      border: 1px solid white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px red;
+      font-family: monospace;
+      transition: background-color 0.3s ease;
+      color: white;
+    }
+
+    #smashVideo {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+    }
+
+    #finalRoast {
+      display: none;
+      position: fixed;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 3rem;
+      color: red;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 10px red, 0 0 20px black;
+      z-index: 10000;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="landing">
+    <h1 id="fakeLink">❌ DO NOT CLICK THIS LINK ❌</h1>
+  </div>
+
+  <div id="question">
+    <h2>Are you stupid?</h2>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <video id="smashVideo" autoplay muted>
+    <source src="smash.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div id="finalRoast">You've been roasted beyond repair 💀🔥</div>
+
+  <script>
+    const fakeLink = document.getElementById("fakeLink");
+    const question = document.getElementById("question");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const video = document.getElementById("smashVideo");
+    const finalRoast = document.getElementById("finalRoast");
+
+    let popupCount = 0;
+
+    const roasts = [
+      "You debug like a goldfish 🐟",
+      "You're the human version of a 404 error.",
+      "Your brain threw an exception.",
+      "Even ChatGPT's tired of you.",
+      "You're like a popup — unnecessary and annoying.",
+      "Keep clicking. It's not like you have a life.",
+      "You failed the Turing test... as a human.",
+      "Congratulations. You're the reason captchas exist.",
+      "Click harder, maybe it'll get smarter.",
+      "Your code compiles out of pity."
+    ];
+
+    fakeLink.onclick = () => {
+      document.getElementById("landing").style.display = "none";
+      question.style.display = "flex";
+    };
+
+    noBtn.addEventListener("mouseover", () => {
+      noBtn.style.position = 'absolute';
+      noBtn.style.top = `${Math.random() * 80 + 10}%`;
+      noBtn.style.left = `${Math.random() * 80 + 10}%`;
+    });
+
+    yesBtn.onclick = () => {
+      question.style.display = "none";
+      startPopupStorm();
+    };
+
+    function startPopupStorm() {
+      const interval = setInterval(() => {
+        if (popupCount < 50) {
+          createPopup();
+        } else {
+          clearInterval(interval);
+          disintegratePopups();
+        }
+      }, 200);
+    }
+
+    function createPopup() {
+      popupCount++;
+      const popup = document.createElement("div");
+      popup.className = "popup";
+
+      const roast = roasts[Math.floor(Math.random() * roasts.length)];
+      popup.innerText = roast;
+
+      // Darkening color
+      const darkness = Math.min(255, popupCount * 5);
+      popup.style.backgroundColor = `rgb(${255 - darkness}, 0, 0)`;
+
+      popup.style.top = Math.random() * (window.innerHeight - 150) + "px";
+      popup.style.left = Math.random() * (window.innerWidth - 250) + "px";
+      popup.style.zIndex = popupCount;
+
+      popup.onclick = () => {
+        popup.remove();
+        createPopup();
+        createPopup();
+      };
+
+      document.body.appendChild(popup);
+    }
+
+    function disintegratePopups() {
+      const allPopups = document.querySelectorAll(".popup");
+      allPopups.forEach(p => {
+        p.style.transition = "transform 0.7s ease, opacity 0.7s ease";
+        p.style.transform = `scale(0) rotate(${Math.random() * 720}deg)`;
+        p.style.opacity = "0";
+      });
+
+      setTimeout(() => {
+        allPopups.forEach(p => p.remove());
+        video.style.display = "block";
+        video.play();
+
+        setTimeout(() => {
+          finalRoast.style.display = "block";
+        }, 2000);
+      }, 800);
+    }
+  </script>
+</body>
+</html>
