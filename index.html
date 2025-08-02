@@ -174,13 +174,6 @@
       const roast = roasts[Math.floor(Math.random() * roasts.length)];
       popup.innerText = roast;
 
-      // Text-to-speech
-      const utterance = new SpeechSynthesisUtterance(roast);
-      utterance.pitch = 1;
-      utterance.rate = 1 + Math.random() * 0.5;
-      utterance.voice = speechSynthesis.getVoices().find(v => v.lang.includes('en')) || null;
-      speechSynthesis.speak(utterance);
-
       // Darkening color
       const darkness = Math.min(255, popupCount * 5);
       popup.style.backgroundColor = `rgb(${255 - darkness}, 0, 0)`;
