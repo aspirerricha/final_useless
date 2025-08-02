@@ -19,3 +19,8 @@ Javascript
 ### Project Documentation
 Software
 ## Screenshots (Add at least 3)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4e15f2f3-ecc0-4865-b98c-3e1fc4b5a759" />
+This image, tinker1.png, shows the initial page of our website.
+this image, tinker2.png, shows how the website reacts to the user chosing 'no'
+this final image, tinker3.png, is how the final project page looks like when the user chooses 'yes'
+smash.mp4 is the video that plays at the end of this project
