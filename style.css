@@ -1,0 +1,47 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+#landing, #question {
+  text-align: center;
+  margin-top: 20vh;
+  font-family: sans-serif;
+}
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.popup {
+  position: absolute;
+  transition: background-color 0.3s;
+}
+
+@keyframes flicker {
+  0%, 100% { text-shadow: 0 0 2px red, 0 0 5px crimson; }
+  50% { text-shadow: 0 0 8px red, 0 0 15px crimson; }
+}
+
+@keyframes shake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(2px, 0px); }
+  100% { transform: translate(0px, -2px); }
+}
+
+.popup {
+  animation: flicker 1s infinite alternate, shake 0.2s infinite;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  text-shadow: 0 0 5px red;
+}
+
+
+
