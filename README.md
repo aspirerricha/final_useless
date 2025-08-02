@@ -24,5 +24,7 @@ This image, tinker1.png, shows the initial page of our website.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a350ec8d-e665-4320-a814-f334700c4702" />
 
 this image, tinker2.png, shows how the website reacts to the user chosing 'no'
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/abbf0dc0-750c-4b46-aaa2-53d98ffbe88e" />
+
 this final image, tinker3.png, is how the final project page looks like when the user chooses 'yes'
 smash.mp4 is the video that plays at the end of this project
